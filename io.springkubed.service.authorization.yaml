@@ -8,6 +8,14 @@ spec:
     metadata:
       annotations:
         autoscaling.knative.dev/max-scale: "1"
+        autoscaling.knative.dev/min-scale: "1"
     spec:
       containers:
         - image: dashaun/io.springkubed.service.authorization:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: "spring.cloud.vault.host"
+              value: "vault.springkubed-io.knative.dashaun.cloud"
+            - name: "spring.cloud.vault.port"
+              value: "80"
