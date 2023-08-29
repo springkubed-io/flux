@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - io.springkubed.service.authorization.yaml
   - io.springkubed.service.gateway.yaml
+  - vault.yaml
+  - zipkin.yaml
