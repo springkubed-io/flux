@@ -16,6 +16,6 @@ spec:
             - containerPort: 8080
           env:
             - name: "spring.cloud.vault.host"
-              value: "vault.springkubed-io.knative.dashaun.cloud"
+              value: "vault.default.svc.cluster.local"
             - name: "spring.cloud.vault.port"
-              value: "80"
+              value: "8200"
