@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - io.springkubed.service.authorization.yaml
   - io.springkubed.service.gateway.yaml
+  - prometheus.yaml
   - vault.yaml
   - zipkin.yaml

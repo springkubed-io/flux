@@ -1,0 +1,37 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: prometheus
+  namespace: springkubed-io
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+        autoscaling.knative.dev/min-scale: "1"
+    spec:
+      containers:
+        - image: prom/prometheus:latest
+          ports:
+            - containerPort: 9090
+          volumeMounts:
+            - mountPath: /prometheus
+              name: prometheus
+              readOnly: false
+      volumes:
+        - name: prometheus
+          persistentVolumeClaim:
+            claimName: prometheus-pv-claim
+            readOnly: false        
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-pv-claim
+  namespace: springkubed-io
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
