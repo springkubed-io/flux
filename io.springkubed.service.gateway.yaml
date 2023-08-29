@@ -19,3 +19,5 @@ spec:
               value: "vault.default.svc.cluster.local"
             - name: "spring.cloud.vault.port"
               value: "8200"
+            - name: "spring.cloud.vault.enabled"
+              value: "false"  
